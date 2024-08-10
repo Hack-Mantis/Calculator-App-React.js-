@@ -1,31 +1,87 @@
-.App {
-  text-align: center;
+*, *::before, *::after{
+  box-sizing: border-box; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body { 
+  margin: 0; 
+  height: auto; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  background: linear-gradient(135deg, white, gray,black ); 
+  background-size: 400% 400%; 
+  animation: gradientAnimation 5s ease infinite; 
+} 
+
+.calculator-grid { 
+  display: grid; 
+  grid-template-columns: repeat(4, 6rem); 
+  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem); 
+  border: 5px solid rgba(255, 255, 255, 0.3); /* Light white border */ border-radius: 15px; /* Rounded corners */ 
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Soft shadow */ 
+  padding: 20px; /* Space between border and content */ 
+  background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent background */ 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@keyframes gradientAnimation { 
+  0% { background-position: 0% 50%; 
+  } 
+  50% { background-position: 100% 50%; 
+  } 100% { background-position: 0% 50%; 
+  } 
 }
 
-.App-link {
-  color: #61dafb;
-}
+.calculator-grid > button { 
+  cursor: pointer; 
+  font-size: 2rem; 
+  border: none; 
+  outline: none; 
+  background-color: black; 
+  color: white; 
+  border-radius: 50%; 
+  margin: 5px; 
+  transition: background-color 0.3s ease; 
+} 
 
-.heart {
-  color: #ff0000;
-}
-
-.small {
-  font-size: 0.75rem;
-}
+  .calculator-grid > button:hover, 
+  .calculator-grid > button:focus { 
+    background-color: #4c4c4c; 
+  } 
+  
+  .span-two { 
+    grid-column: span 2; 
+    border-radius: 50px; 
+  } 
+  
+  .output { 
+    grid-column: 1 / -1; 
+    background-color: black; 
+    color: white; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+    justify-content: space-around; 
+    padding: 2.5rem; 
+    word-wrap: break-word; 
+    word-break: break-all; 
+    border-radius: 20px; 
+  } 
+  
+  .output .previous-operand { 
+    color: gray; 
+    font-size: 1.5rem; 
+  } 
+  
+  .output .current-operand { 
+    color: white; 
+    font-size: 2.5rem;
+  } 
+  
+  button.operator { 
+    background-color: #ff9500; 
+  } 
+  
+  button.operator:hover, 
+  button.operator:focus { 
+    background-color: #dbd2bf; 
+  }
